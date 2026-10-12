@@ -2,52 +2,312 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Inner Sky — support</title>
-  <meta name="description" content="Support and privacy for Inner Sky, a calm mood journal that paints your day as a sky.">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Inner Sky · Your mood, painted as a sky</title>
+  <meta name="description" content="Inner Sky is a mood tracker and journal for iPhone. Drag the sky to how you feel, see your week as weather, and get a gentle forecast for tomorrow. Free, private, no account.">
+  <meta name="theme-color" content="#0b1028">
+  <meta property="og:title" content="Inner Sky · Your mood, painted as a sky">
+  <meta property="og:description" content="A mood tracker for iPhone. Drag the sky to how you feel. Private, no account.">
+  <meta property="og:image" content="https://goyalaakashdeep.github.io/mood-sky/art/og.jpg">
+  <meta property="og:url" content="https://goyalaakashdeep.github.io/mood-sky/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="apple-itunes-app" content="app-id=6814714598">
+  <link rel="icon" href="art/icon.png">
+  <link rel="apple-touch-icon" href="art/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <header>
-    <p class="wordmark">Inner Sky</p>
-    <p class="tag">Your mood, painted as weather.</p>
+  <div class="sky" aria-hidden="true"></div>
+  <canvas class="stars" aria-hidden="true"></canvas>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="bar">
+    <div class="wrap">
+      <a class="brand" href="#top"><img src="art/icon.png" alt="" width="36" height="36"><span>Inner Sky</span></a>
+      <nav aria-label="Sections">
+        <a href="#how">How it works</a>
+        <a href="#lessons">Sky Lessons</a>
+        <a href="#private">Privacy</a>
+        <a href="#support">Support</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <h1>Support</h1>
-    <p>
-      Inner Sky lives on your iPhone. There is no account to sign into and no web dashboard.
-      Your skies, reasons and notes stay on the device.
-    </p>
-    <p>
-      If something feels off — a check-in that will not save, a widget that will not update, or a question about
-      Inner Sky Plus — email <a href="mailto:goyalaakashdeep@gmail.com">goyalaakashdeep@gmail.com</a>.
-      Please mention your iOS version and what you tapped last.
-    </p>
+  <main id="top">
+    <!-- hero -->
+    <section class="hero" data-sky="night">
+      <div class="wrap">
+        <div class="rise">
+          <p class="eyebrow">Mood tracker for iPhone</p>
+          <h1>Your mood,<br><em>painted as a sky.</em></h1>
+          <p class="lead">I'm bad at saying how I feel. So I made an app where you drag the sky instead of picking a word. Ten seconds a day, and your weeks turn into weather.</p>
+          <div class="actions">
+            <a class="cta" href="https://apps.apple.com/app/apple-store/id6814714598?pt=129464078&amp;ct=website&amp;mt=8">
+              <img src="art/icon.png" alt="" width="34" height="34">
+              <span><small>Free on the</small>App Store</span>
+            </a>
+            <a class="ghost" href="#see">Watch it move</a>
+          </div>
+          <div class="facts">
+            <span class="chip">Free</span><span class="chip">No account</span><span class="chip">Stays on your iPhone</span><span class="chip">Widgets &amp; Siri</span>
+          </div>
+        </div>
+        <div class="phone rise">
+          <div class="clip">
+            <video data-auto autoplay muted loop playsinline preload="metadata" poster="media/hero.jpg" aria-label="Inner Sky in use: dragging the sky, tapping what shaped the day, the day as the sun's path">
+              <source src="media/hero.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+      <svg class="ridge" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 140 L0 92 L120 60 L220 84 L340 38 L470 80 L600 50 L720 88 L860 44 L990 82 L1120 52 L1260 86 L1440 58 L1440 140 Z" fill="rgba(12,10,28,.55)"/>
+        <path d="M0 140 L0 112 L160 90 L300 110 L430 84 L590 112 L760 92 L900 116 L1060 94 L1230 114 L1440 96 L1440 140 Z" fill="rgba(8,7,20,.8)"/>
+      </svg>
+    </section>
 
-    <h2>Common questions</h2>
-    <p>
-      <strong>Why is my forecast not showing yet?</strong> The forecast reads patterns across days, so it needs
-      check-ins on four different days. Several check-ins on the same day count as one day.
-    </p>
-    <p>
-      <strong>The Lock Screen buttons open the app instead of logging.</strong> iOS needs the phone unlocked with
-      Face ID or Touch ID before a widget button can act. Tap again after unlocking.
-    </p>
-    <p>
-      <strong>Restoring Inner Sky Plus.</strong> Open Settings → Inner Sky Plus → Restore purchases. Purchases are
-      tied to your Apple ID, so they come back on a new iPhone.
-    </p>
-    <p>
-      <strong>Deleting my data.</strong> Delete the app and every sky, note and reason goes with it. If iCloud
-      backup was on, turn it off in Settings first to clear the backup copy.
-    </p>
+    <!-- a note -->
+    <section data-sky="night" aria-label="Why I made Inner Sky">
+      <div class="wrap note rise">
+        <p class="eyebrow">Why I made it</p>
+        <blockquote>I never kept up with mood apps. Their charts and scores felt like homework at the end of a long day. So I made one where you just drag a sky, and over the weeks the skies tell you things you didn't notice about yourself.</blockquote>
+        <p class="sig">Aakash, the one person behind Inner Sky</p>
+      </div>
+    </section>
 
-    <p class="nav"><a href="privacy.html">Privacy policy</a></p>
+    <!-- how it works -->
+    <section id="how" data-sky="twilight">
+      <div class="wrap">
+        <div class="rise">
+          <p class="eyebrow">How it works</p>
+          <h2>Two touches. <em>That's the whole check-in.</em></h2>
+          <p class="lead">No forms, no scores, no blank page. You move the sky to match the day, and Inner Sky does the remembering.</p>
+        </div>
+        <div class="steps">
+          <div class="step rise">
+            <img src="art/01_mood_as_sky.jpg" alt="Two iPhones showing a stormy sky and a sunny sky in Inner Sky" loading="lazy" width="720" height="1565">
+            <p class="n">ONE</p>
+            <h3>Drag the sky</h3>
+            <p>Stormy, cloudy, clear or blazing. Up and down for how strongly you feel it.</p>
+          </div>
+          <div class="step rise">
+            <img src="art/02_ten_seconds.jpg" alt="Choosing the kind of feeling and what shaped the day" loading="lazy" width="720" height="1565">
+            <p class="n">TWO</p>
+            <h3>Name it in 10 seconds</h3>
+            <p>Tap the weather that fits, and if you like, what shaped it: sleep, work, people.</p>
+          </div>
+          <div class="step rise">
+            <img src="art/03_forecast.jpg" alt="Inner Sky's gentle forecast for tomorrow" loading="lazy" width="720" height="1565">
+            <p class="n">THREE</p>
+            <h3>Get a gentle forecast</h3>
+            <p>After a few days it learns your rhythm and paints tomorrow's likely sky, with the reasons why.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- see it move: app clips by popularity -->
+    <section id="see" data-sky="storm">
+      <div class="wrap">
+        <div class="rise">
+          <p class="eyebrow">See it move</p>
+          <h2>Every day gets <em>its own weather.</em></h2>
+          <p class="lead">Real screens from the app. Some days are blazing, some are quiet, some just storm. All of them are allowed.</p>
+        </div>
+        <div class="row3">
+          <div class="rise">
+            <div class="clip"><video data-auto autoplay muted loop playsinline preload="none" poster="media/paint.jpg" aria-label="The sky being painted from a feeling"><source src="media/paint.mp4" type="video/mp4"></video></div>
+            <div class="card-cap"><h3>So I made my phone paint it</h3><p>Where Inner Sky started.</p><a href="https://www.youtube.com/shorts/RPRjSofi4lI">Watch on YouTube ↗</a></div>
+          </div>
+          <div class="rise">
+            <div class="clip"><video data-auto autoplay muted loop playsinline preload="none" poster="media/breathe.jpg" aria-label="Breathing with the sky"><source src="media/breathe.mp4" type="video/mp4"></video></div>
+            <div class="card-cap"><h3>One minute, breathing with the sky</h3><p>For when your head is too loud.</p><a href="https://www.youtube.com/shorts/ANr5b8tqntY">Watch on YouTube ↗</a></div>
+          </div>
+          <div class="rise">
+            <div class="clip"><video data-auto autoplay muted loop playsinline preload="none" poster="media/checkin.jpg" aria-label="Logging a stormy day"><source src="media/checkin.mp4" type="video/mp4"></video></div>
+            <div class="card-cap"><h3>Some days are stormy</h3><p>And that's allowed.</p><a href="https://www.youtube.com/shorts/N33ZnoFAV8g">Watch on YouTube ↗</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- your days as weather -->
+    <section data-sky="dusk">
+      <div class="wrap">
+        <div class="rise">
+          <p class="eyebrow">Look back</p>
+          <h2>Your days, <em>drawn as weather.</em></h2>
+          <p class="lead">Patterns show up on their own. No charts to read, just skies you'd happily keep.</p>
+        </div>
+        <div class="features">
+          <figure class="rise"><img src="art/sim_05.jpg" alt="Your day drawn as the sun's arc" loading="lazy" width="600" height="1304"><figcaption><b>Your arc</b><span>Each day drawn like the sun's path.</span></figcaption></figure>
+          <figure class="rise"><img src="art/sim_07.jpg" alt="A month of skies on a calendar" loading="lazy" width="600" height="1304"><figcaption><b>Your skies</b><span>A month you can see at a glance.</span></figcaption></figure>
+          <figure class="rise"><img src="art/sim_01.jpg" alt="A monthly Sky Letter reading Steady" loading="lazy" width="600" height="1304"><figcaption><b>A Sky Letter</b><span>Every month ends with one.</span></figcaption></figure>
+          <figure class="rise"><img src="art/sim_11_widgets.jpg" alt="Inner Sky widgets on the Home Screen" loading="lazy" width="600" height="1304"><figcaption><b>Widgets &amp; Siri</b><span>Check in without opening the app.</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- today's sky series -->
+    <section data-sky="calm">
+      <div class="wrap">
+        <div class="rise">
+          <p class="eyebrow">Today's sky</p>
+          <h2>A week of naming my feelings, <em>one sky at a time.</em></h2>
+          <p class="lead">A small daily series on YouTube and Instagram. A new day at 12:30 pm IST.</p>
+        </div>
+        <div class="strip" aria-label="Today's sky, Days 1 to 7">
+          <figure><img src="art/day1.jpg" alt="Day 1: woke up feeling stormy" loading="lazy" width="360" height="640"><figcaption>Day 1 · Stormy</figcaption></figure>
+          <figure><img src="art/day2.jpg" alt="Day 2: quiet, a little low" loading="lazy" width="360" height="640"><figcaption>Day 2 · Quiet</figcaption></figure>
+          <figure><img src="art/day3.jpg" alt="Day 3: the sun came back" loading="lazy" width="360" height="640"><figcaption>Day 3 · Bright</figcaption></figure>
+          <figure><img src="art/day4.jpg" alt="Day 4: breathing with the sky" loading="lazy" width="360" height="640"><figcaption>Day 4 · Too loud</figcaption></figure>
+          <figure><img src="art/day5.jpg" alt="Day 5: the day as the sun's path" loading="lazy" width="360" height="640"><figcaption>Day 5 · Up and down</figcaption></figure>
+          <figure><img src="art/day6.jpg" alt="Day 6: a steady month" loading="lazy" width="360" height="640"><figcaption>Day 6 · A good day</figcaption></figure>
+          <figure><img src="art/day7.jpg" alt="Day 7: a week of skies" loading="lazy" width="360" height="640"><figcaption>Day 7 · The week</figcaption></figure>
+        </div>
+        <p class="small"><a href="https://www.youtube.com/playlist?list=PLMYnB6WtKAUA">Follow the series on YouTube ↗</a></p>
+      </div>
+    </section>
+
+    <!-- sky lessons: animations by popularity -->
+    <section id="lessons" data-sky="golden">
+      <div class="wrap">
+        <div class="rise">
+          <p class="eyebrow">Sky Lessons</p>
+          <h2>Tiny lessons about feelings, <em>with a cloud who has them too.</em></h2>
+          <p class="lead">Short animated films I make for YouTube and Instagram. Each one is about one small idea that helped me.</p>
+        </div>
+        <div class="row3 lessons">
+          <div class="rise">
+            <div class="clip"><video data-auto autoplay muted loop playsinline preload="none" poster="media/heavy.jpg" aria-label="Animated cloud: some days feel heavy"><source src="media/heavy.mp4" type="video/mp4"></video></div>
+            <div class="card-cap"><h3>Some days feel heavy</h3><p>You don't have to explain it.</p><a href="https://www.youtube.com/shorts/jWEA9A6nK9c">Watch ↗</a></div>
+          </div>
+          <div class="rise">
+            <div class="clip"><video data-auto autoplay muted loop playsinline preload="none" poster="media/lesson3.jpg" aria-label="Animated cloud: happy and sad at the same time"><source src="media/lesson3.mp4" type="video/mp4"></video></div>
+            <div class="card-cap"><h3>Happy and sad at the same time?</h3><p>Some skies do this all the time.</p><a href="https://www.youtube.com/shorts/66RBpTwqv-E">Watch ↗</a></div>
+          </div>
+          <div class="rise">
+            <div class="clip"><video data-auto autoplay muted loop playsinline preload="none" poster="media/lesson1.jpg" aria-label="Animated cloud: why naming a feeling helps"><source src="media/lesson1.mp4" type="video/mp4"></video></div>
+            <div class="card-cap"><h3>Why naming a feeling helps</h3><p>The first Sky Lesson.</p><a href="https://www.youtube.com/shorts/gcEMTVEQISY">Watch ↗</a></div>
+          </div>
+          <div class="rise">
+            <div class="clip"><video data-auto autoplay muted loop playsinline preload="none" poster="media/lesson5.jpg" aria-label="Animated cloud: breathe with the sky"><source src="media/lesson5.mp4" type="video/mp4"></video></div>
+            <div class="card-cap"><h3>Breathe with the sky</h3><p>A 30-second reset.</p><a href="https://www.youtube.com/shorts/ge5JhY17dds">Watch ↗</a></div>
+          </div>
+          <div class="rise">
+            <div class="clip"><video data-auto autoplay muted loop playsinline preload="none" poster="media/lesson2.jpg" aria-label="Animated cloud: every feeling is weather"><source src="media/lesson2.mp4" type="video/mp4"></video></div>
+            <div class="card-cap"><h3>Every feeling is weather</h3><p>It moves through. It doesn't stay.</p><a href="https://www.youtube.com/shorts/mmHPe55ADbc">Watch ↗</a></div>
+          </div>
+          <div class="rise">
+            <div class="clip"><video data-auto autoplay muted loop playsinline preload="none" poster="media/lesson4.jpg" aria-label="Animated cloud: every sky has a why"><source src="media/lesson4.mp4" type="video/mp4"></video></div>
+            <div class="card-cap"><h3>Every sky has a why</h3><p>Bad moods rarely come from nowhere.</p><a href="https://www.youtube.com/shorts/GI56GJ23vEE">Watch ↗</a></div>
+          </div>
+        </div>
+        <p class="small" style="margin-top:28px"><a href="https://www.youtube.com/playlist?list=PLCAdbdAiJc2U">All Sky Lessons on YouTube ↗</a></p>
+      </div>
+    </section>
+
+    <!-- from the feed: instagram covers + story frames -->
+    <section data-sky="dusk">
+      <div class="wrap">
+        <div class="rise">
+          <p class="eyebrow">From the feed</p>
+          <h2>Little skies, <em>shared most days.</em></h2>
+          <p class="lead">Covers and stories from Inner Sky on Instagram and YouTube.</p>
+        </div>
+        <div class="strip" aria-label="Instagram covers and stories">
+          <img src="art/cover_ShortA.jpg" alt="I've never been good at saying how I feel" loading="lazy" width="720" height="1280">
+          <img src="art/cover_Lesson3.jpg" alt="Partly cloudy: happy and sad at the same time" loading="lazy" width="720" height="1280">
+          <img src="art/story1_how-it-works.jpg" alt="How it works: your mood, as a sky" loading="lazy" width="720" height="1280">
+          <img src="art/cover_ShortB.jpg" alt="Try this if your head is too loud" loading="lazy" width="720" height="1280">
+          <img src="art/story2_ten-seconds.jpg" alt="Name how you feel in 10 seconds" loading="lazy" width="720" height="1280">
+          <img src="art/cover_Lesson4.jpg" alt="Every sky has a why" loading="lazy" width="720" height="1280">
+          <img src="art/story3_your-month.jpg" alt="Watch your month as weather" loading="lazy" width="720" height="1280">
+          <img src="art/cover_ShortC.jpg" alt="Not every day is sunny" loading="lazy" width="720" height="1280">
+          <img src="art/cover_Lesson5.jpg" alt="Breathe with the sky" loading="lazy" width="720" height="1280">
+          <img src="art/story4_forecast.jpg" alt="A gentle forecast for tomorrow" loading="lazy" width="720" height="1280">
+        </div>
+        <p class="small"><a href="https://www.instagram.com/innerskyapp/">@innerskyapp on Instagram ↗</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/@innerskyapp">YouTube ↗</a></p>
+      </div>
+    </section>
+
+    <!-- privacy -->
+    <section id="private" data-sky="calm">
+      <div class="wrap">
+        <div class="rise">
+          <p class="eyebrow">Private by design</p>
+          <h2>Your skies <em>stay with you.</em></h2>
+        </div>
+        <div class="trio">
+          <div class="rise"><b>No account</b><p>Nothing to sign up for, nothing to log into. Open it and check in.</p></div>
+          <div class="rise"><b>On your iPhone</b><p>Your skies, reasons and notes are stored on the device. There's no web dashboard.</p></div>
+          <div class="rise"><b>Your choice of backup</b><p>iCloud backup is optional and off by default. Turn it on only if you want it.</p></div>
+        </div>
+        <p class="small" style="margin-top:22px"><a href="privacy.html">Read the privacy policy</a></p>
+      </div>
+    </section>
+
+    <!-- support (App Store support URL points here) -->
+    <section id="support" data-sky="twilight">
+      <div class="wrap support">
+        <div class="contact rise">
+          <p class="eyebrow">Support</p>
+          <h2 style="font-size:clamp(30px,4vw,44px)">Something feel off?</h2>
+          <p>If a check-in won't save, a widget won't update, or you have a question about Inner Sky Plus, email me:</p>
+          <p class="mail"><a href="mailto:goyalaakashdeep@gmail.com">goyalaakashdeep@gmail.com</a></p>
+          <p class="small">Please mention your iOS version and what you tapped last.</p>
+        </div>
+        <div class="faq rise">
+          <details open>
+            <summary>Why is my forecast not showing yet?</summary>
+            <p>The forecast reads patterns across days, so it needs check-ins on four different days. Several check-ins on the same day count as one day.</p>
+          </details>
+          <details>
+            <summary>The Lock Screen buttons open the app instead of logging.</summary>
+            <p>iOS needs the phone unlocked with Face ID or Touch ID before a widget button can act. Tap again after unlocking.</p>
+          </details>
+          <details>
+            <summary>How do I restore Inner Sky Plus?</summary>
+            <p>Open Settings → Inner Sky Plus → Restore purchases. Purchases are tied to your Apple ID, so they come back on a new iPhone.</p>
+          </details>
+          <details>
+            <summary>How do I delete my data?</summary>
+            <p>Delete the app and every sky, note and reason goes with it. If iCloud backup was on, turn it off in Settings first to clear the backup copy.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- closing -->
+    <section class="closing" data-sky="golden">
+      <div class="wrap rise">
+        <h2>How is the sky <em>today?</em></h2>
+        <p class="lead">Free on iPhone. No account. Ten seconds is enough.</p>
+        <a class="cta" href="https://apps.apple.com/app/apple-store/id6814714598?pt=129464078&amp;ct=website&amp;mt=8">
+          <img src="art/icon.png" alt="" width="34" height="34">
+          <span><small>Free on the</small>App Store</span>
+        </a>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <p>© 2026 Aakashdeep Goyal</p>
+    <div class="wrap">
+      <span class="small">© <span id="year">2026</span> Aakashdeep Goyal</span>
+      <nav aria-label="Footer">
+        <a href="https://apps.apple.com/app/apple-store/id6814714598?pt=129464078&amp;ct=website&amp;mt=8">App Store</a>
+        <a href="https://www.youtube.com/@innerskyapp">YouTube</a>
+        <a href="https://www.instagram.com/innerskyapp/">Instagram</a>
+        <a href="#support">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
   </footer>
+
+  <script src="assets/site.js"></script>
 </body>
 </html>
